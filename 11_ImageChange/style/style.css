@@ -1,0 +1,7 @@
+*{margin: 0; padding: 0;}
+
+
+header{}
+header > div{color: salmon; font-size: 40px;margin:40px 0 0 40px;}
+
+div#imgChange{width: 500px; height: 500px;}

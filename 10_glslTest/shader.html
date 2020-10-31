@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Shader</title>
+</head>
+
+
+
+<body>
+
+    <div id="threejs"></div>
+    
+
+    <script src="./js/three.min.js"></script>
+    <script src="./js/OrbitControls.js"></script>
+
+    <script type="x-shader/x-vertex" id="vertexShader">
+       
+    </script>
+    <!-- <script type="x-shader/x-fragment" id="fragmentShader">
+      
+      uniform vec2 uOffset;
+      varying vec2 vUv;
+
+      void main() {
+        vUv = uv;
+        vec3 newPosition = position;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+      }
+    </script> -->
+
+    <!-- <script type="x-shader/x-fragment" id="fragmentShader">
+      uniform sampler2D uTexture;
+      uniform float uAlpha;
+      varying vec2 vUv;
+
+      void main() {
+        vec3 color = texture2D(uTexture,vUv).rgb;
+        gl_FragColor = vec4(color,1.0);
+    </script> -->
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/TweenLite.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

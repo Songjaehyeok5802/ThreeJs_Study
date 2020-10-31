@@ -1,0 +1,17 @@
+
+
+
+/* body{overflow: hidden;} */
+
+
+div#three{position: fixed;}
+
+
+span{
+    width: 100px; height: 100px;display: inline-block; text-align: center; border: 1px solid salmon; 
+    border-radius: 50px;line-height: 100px; margin: 100px; position: absolute; z-index: 2;
+}
+span#play{left: 150px;}
+video{opacity: 0; width: 0; display: none;}
+
+article{width: 100%; height: 3000px; position: absolute;}
