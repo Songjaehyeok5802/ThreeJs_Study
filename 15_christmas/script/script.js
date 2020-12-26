@@ -43,10 +43,13 @@ function three(){
     const textureCube = new THREE.CubeTextureLoader().load( url);
     textureCube.mapping = THREE.CubeRefractionMapping;
 
-    const geometry = new THREE.SphereGeometry( 1, 32, 32 );
-    const material = new THREE.MeshPhongMaterial( {color: 0xffffff , envMap: textureCube, refractionRatio: 0.98, reflectivity: 0.9} );
-    const sphere = new THREE.Mesh( geometry, material );
-    scene.add( sphere );
+        const geometry = new THREE.SphereGeometry( 4.5, 32, 32 );
+        const material = new THREE.MeshPhongMaterial( {color: 0xffffff , envMap: textureCube, refractionRatio: 0.98, reflectivity: 0.9} );
+        const sphere = new THREE.Mesh( geometry, material );
+        scene.add( sphere );
+    
+
+
 
 
     function prosecution(){
@@ -69,21 +72,36 @@ function three(){
                 pro_3D.scale.set(2, 2, 2);
                 pro_3D.position.set(16, -2, 0);
                 pro_3D.rotation.set(0, Math.PI / 2 * -1, 0);
-                scene.add(pro_3D);
+                // scene.add(pro_3D);
             })
         });
     }
     prosecution();
 
 
+    let composer;
+    composer = new POSTPROCESSING.EffectComposer(renderer);
+    composer.addPass(new POSTPROCESSING.RenderPass(scene,camera));
 
+    const effectPass = new POSTPROCESSING.EffectPass(
+      camera,
+      new POSTPROCESSING.BloomEffect()
+    );
+    effectPass.renderToScreen = true;
+    composer.addPass(effectPass);
                 
 
  
-
+    var t = 0;
     const renderScene = new function renderScene() {
         requestAnimationFrame(renderScene);
-        renderer.render(scene,camera);
+        t += 0.0025;  
+        camera.position.x = 20*Math.cos(t) + 0;
+        camera.position.z = 20*Math.sin(t) + 0;
+        camera.lookAt(0, 0, 0);
+
+        composer.render();
+        // renderer.render(scene,camera);
     }  
     
 }
