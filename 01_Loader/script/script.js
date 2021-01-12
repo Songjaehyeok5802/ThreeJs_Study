@@ -32,7 +32,7 @@ function threejs() {
     scene.add( lights[1] );
     scene.add( lights[2] );
 
-    // // video----------------------------------------------------
+    // video----------------------------------------------------
     // var vid = document.getElementById("vid");
     // var vidTxt = new THREE.VideoTexture(vid);
     // var cubeGeo = new THREE.BoxGeometry(1,1,1);
@@ -84,15 +84,15 @@ function threejs() {
     // })
 
     // fbx----------------------------------------------------
-    var imgCube = new THREE.Object3D;
-    var cubeLoad = new THREE.FBXLoader();
-    cubeLoad.load(
-        "./fbx/img2.fbx",
-        function(object){
-            imgCube = object;
-            scene.add(imgCube);
-        }
-    );
+    // var imgCube = new THREE.Object3D;
+    // var cubeLoad = new THREE.FBXLoader();
+    // cubeLoad.load(
+    //     "./fbx/img2.fbx",
+    //     function(object){
+    //         imgCube = object;
+    //         scene.add(imgCube);
+    //     }
+    // );
 
     
     
