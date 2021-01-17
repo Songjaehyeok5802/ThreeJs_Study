@@ -24,17 +24,6 @@ function threejs() {
     camera.position.set(0, 8, 8);
     camera.lookAt(0, 0, 0);  
 
-    //LIGHT-------------
-    // var ambientLight = new THREE.AmbientLight(0xd8d8d8);
-    // scene.add(ambientLight);
-    // const DirecLight = new THREE.DirectionalLight( 0xffffff, 0.5);
-    // DirecLight.position.set(0, 10, 0);
-    // scene.add(DirecLight);
-    // DirecLight.castShadow = true;           
-    // DirecLight.shadow.mapSize.width = 1000; 
-    // DirecLight.shadow.mapSize.height = 1000;
-
-
     var light = new THREE.SpotLight( 0xffffff, 1, 100, 2, 1, 0);
     light.position.set( 0, 50, 0 ); 	
     camera.lookAt(0, 0, 0); 	
@@ -42,8 +31,6 @@ function threejs() {
     light.shadow.mapSize.width = 4000; 
     light.shadow.mapSize.height = 4000;
     scene.add( light );
-
-
 
     const geometry = new THREE.BoxGeometry(1,0);
     const material = new THREE.MeshStandardMaterial({color: 0xdeb887});
