@@ -27,11 +27,11 @@ function threejs() {
     
     geometry = new THREE.PlaneGeometry(30, 30, 300, 300);
     const material = new THREE.MeshPhongMaterial()
-    const test = new THREE.TextureLoader().load("../img/img.png")
-    material.displacementMap = test
+    const img_texture = new THREE.TextureLoader().load("./img/img.png")
+    material.displacementMap = img_texture
     material.side = THREE.DoubleSide;
     material.wireframe = true;
-    material.map = test
+    material.map = img_texture
     var plane = new THREE.Mesh( geometry, material);
     scene.add(plane);
 
