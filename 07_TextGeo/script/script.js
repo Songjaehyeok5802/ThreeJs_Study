@@ -28,10 +28,10 @@ function threejs() {
     var loader = new THREE.FontLoader();
 
     loader.load( './Lato Hairline_Regular.json', function ( font ) {
-        var geometry = new THREE.TextGeometry( 'XY & Z', {
+        var geometry = new THREE.TextGeometry( 'Song Jae Hyeok', {
             font: font,
             size: 50,
-            curveSegments: 12
+            curveSegments: 1
         } );
 
         const mat = new THREE.MeshBasicMaterial({color : 0xf0f8ff});
