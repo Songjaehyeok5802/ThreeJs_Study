@@ -8,10 +8,6 @@ function init() {
     camera.position.x ;
     camera.rotation.x = 1.16;
     camera.rotation.y = -0.12;
-    // camera.rotation.z = 0.27;
-    
-    // let ambient = new THREE.AmbientLight(0xc3c3c3);
-    // scene.add(ambient);
     
     let directionalLight = new THREE.DirectionalLight(0xc4c4c4);
     directionalLight.position.set(0,0,1);
@@ -33,11 +29,8 @@ function init() {
 
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth,window.innerHeight);
-    scene.fog = new THREE.FogExp2(0xffffff, 0.002);
-    renderer.setClearColor(scene.fog.color);
+    renderer.setClearColor( 0x000000, 0 );
     document.body.appendChild(renderer.domElement);
-
-    // control = new THREE.OrbitControls(camera, renderer.domElement);
     
     let loader = new THREE.TextureLoader();
     loader.load("./img/smoke_4.png", function(texture){
