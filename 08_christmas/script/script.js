@@ -7,12 +7,12 @@
 function three(){
     const scene = new THREE.Scene();
     let url = [
-        '../img/bg/blizzard_ft.jpg',
-        '../img/bg/blizzard_bk.jpg', 
-        '../img/bg/blizzard_up.jpg',
-        '../img/bg/blizzard_dn.jpg',
-        '../img/bg/blizzard_rt.jpg',
-        '../img/bg/blizzard_lf.jpg',
+        './img/bg/blizzard_ft.jpg',
+        './img/bg/blizzard_bk.jpg', 
+        './img/bg/blizzard_up.jpg',
+        './img/bg/blizzard_dn.jpg',
+        './img/bg/blizzard_rt.jpg',
+        './img/bg/blizzard_lf.jpg',
     ]
     let loader = new THREE.CubeTextureLoader();
     scene.background = loader.load(url);
@@ -43,40 +43,10 @@ function three(){
     const textureCube = new THREE.CubeTextureLoader().load( url);
     textureCube.mapping = THREE.CubeRefractionMapping;
 
-        const geometry = new THREE.SphereGeometry( 4.5, 32, 32 );
-        const material = new THREE.MeshPhongMaterial( {color: 0xffffff , envMap: textureCube, refractionRatio: 0.98, reflectivity: 0.9} );
-        const sphere = new THREE.Mesh( geometry, material );
-        scene.add( sphere );
-    
-
-
-
-
-    function prosecution(){
-        var pro_mtl =  new THREE.MTLLoader(),
-        mtl_Src = "./obj/Tree.mtl";
-        pro_3D = new THREE.Object3D;
-
-        pro_mtl.load(mtl_Src, function (materials){
-        materials.preload();
-
-        var testobj = new THREE.OBJLoader();
-
-        testobj.setMaterials(materials);
-        
-        testobj.load('./obj/Tree.obj', 
-            function (object) {
-                pro_3D = object;
-                pro_3D.castShadow = true;
-                pro_3D.receiveShadow = true;
-                pro_3D.scale.set(2, 2, 2);
-                pro_3D.position.set(16, -2, 0);
-                pro_3D.rotation.set(0, Math.PI / 2 * -1, 0);
-                // scene.add(pro_3D);
-            })
-        });
-    }
-    prosecution();
+    const geometry = new THREE.SphereGeometry( 4.5, 32, 32 );
+    const material = new THREE.MeshPhongMaterial( {color: 0xffffff , envMap: textureCube, refractionRatio: 0.98, reflectivity: 0.9} );
+    const sphere = new THREE.Mesh( geometry, material );
+    scene.add( sphere );
 
 
     let composer;
