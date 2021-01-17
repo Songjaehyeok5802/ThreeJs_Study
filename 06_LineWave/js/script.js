@@ -86,17 +86,13 @@ function threejs() {
     var count = 0
     function planeAni(geo, mesh){
         for (var i = 0; i < geo.vertices.length; i++) {
-            var z = +geo.vertices[i].z;
+            var z = geo.vertices[i].z;
             geo.vertices[i].z = Math.sin(( i + count * 0.002)) * (geo.vertices[i]._myZ - (geo.vertices[i]._myZ* 0.6))
             mesh.geometry.verticesNeedUpdate = true;
             count += 0.1
         }
     }
 
-
-
-    // var effect = new THREE.AnaglyphEffect(renderer);
-    // effect.setSize(window.innerWidth, window.innerHeight);
 
     //RENDER-------------------------------------------------------------------------------
     var renderScene = new function renderScene() {
@@ -105,12 +101,8 @@ function threejs() {
         planeAni(geometry, plane);
         planeAni(geometry2, plane2);
 
-        // console.log(camera.position.x);
-        // console.log(camera.position.y);
-        // console.log(camera.position.z);
 
         renderer.render(scene,camera);
-        // effect.render(scene,camera);
 
 
 
