@@ -68,20 +68,20 @@ function threejs() {
 
 
     // mtl 포함 obj----------------------------------------------------
-    // var testmtl =  new THREE.MTLLoader(),
-    //     mtl = "./obj/test.mtl",
-    //     // mtl = "./obj/qwe.mtl",
-    //     main = new THREE.Object3D;
-    // testmtl.load(mtl, function (materials){
-    //     materials.preload();
-    //     var testobj = new THREE.OBJLoader();
-    //         testobj.setMaterials(materials);
-    //         testobj.load('./obj/test.obj', function (object) {
-    //         object.scale.set(1, 1, 1);
-    //         main = object;
-    //         scene.add(main);
-    //     })
-    // })
+    var testmtl =  new THREE.MTLLoader(),
+        mtl = "./obj/test.mtl",
+        // mtl = "./obj/qwe.mtl",
+        main = new THREE.Object3D;
+    testmtl.load(mtl, function (materials){
+        materials.preload();
+        var testobj = new THREE.OBJLoader();
+            testobj.setMaterials(materials);
+            testobj.load('./obj/test.obj', function (object) {
+            object.scale.set(1, 1, 1);
+            main = object;
+            scene.add(main);
+        })
+    })
 
     // fbx----------------------------------------------------
     // var imgCube = new THREE.Object3D;
