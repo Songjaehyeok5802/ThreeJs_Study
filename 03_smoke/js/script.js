@@ -18,25 +18,32 @@ function init() {
     })
     renderer.setClearColor( 0xffffff, 0 );
 
-    camera.position.set(0, 0, 10);
+    camera.position.set(0, 1.5, 10);
     
     
-    let directionalLight = new THREE.DirectionalLight(0xc4c4c4);
-    directionalLight.position.set(0,0,1);
-    scene.add(directionalLight);
 
-    let redLight = new THREE.PointLight(0xff0000,10,100);
-    // redLight.position.set(500, 500, 500);
-    scene.add(redLight);
+    const blueLight = new THREE.PointLight( 0xb3ccff, 2, 100 );
+    blueLight.position.set( 8, 1.5, 3 );
+    scene.add( blueLight );
+
+    const redLight = new THREE.PointLight( 0xffb3b3, 2, 100 );
+    redLight.position.set( -8, 1.5, 3 );
+    scene.add( redLight );
     
-    let blueLight = new THREE.PointLight(0x0000ff,10,100);
-    // blueLight.position.set(100, 100, 100);
-    scene.add(blueLight);
+    const sphereSize = 1;
+    const pointLightHelper = new THREE.PointLightHelper( redLight, sphereSize );
+    scene.add( pointLightHelper );
+
+    const pointLightHelper2 = new THREE.PointLightHelper( blueLight, sphereSize );
+    scene.add( pointLightHelper2 );
     
-    let greenLight = new THREE.PointLight(0x00ff00,10,100);
-    // greenLight.position.set(300, 300, 300);
-    scene.add(greenLight);
-    
+    const light = new THREE.DirectionalLight( 0xffffff, 0.5);
+    light.position.set(0, 10, 10);
+    const helper = new THREE.DirectionalLightHelper( light, 5 );
+    scene.add( light );
+    scene.add( helper );
+
+
 
     let loader = new THREE.TextureLoader();
     loader.load("./img/smoke.png", function(texture){
@@ -45,27 +52,34 @@ function init() {
         map:texture,
         transparent: true
         });
-        for(let i=0; i<1; i++) {
+        for(let i=0; i<25; i++) {
             let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
             cloud.position.set(
-                0,
-                0,
-                0
+                (Math.random()*15)-10,
+                (Math.random()*5)-2,
+                Math.random()*2
             );
-            cloud.material.opacity = 1;
+            cloud.material.opacity = 0.8;
             cloudParticles.push(cloud);
             scene.add(cloud);
         }
     });
-    
+
+    let composer;
+    composer = new POSTPROCESSING.EffectComposer(renderer);
+    composer.addPass(new POSTPROCESSING.RenderPass(scene,camera));
+
+    const effectPass = new POSTPROCESSING.EffectPass(
+      camera,
+      new POSTPROCESSING.BloomEffect()
+    );
+    effectPass.renderToScreen = true;
+    composer.addPass(effectPass);
+
     function render() {
         cloudParticles.forEach(e => {
-            e.rotation.z -=0.001;
+            e.rotation.z -=0.0005;
          });
-
-         console.log(camera.position.x);
-         console.log(camera.position.y);
-         console.log(camera.position.z);
         renderer.render(scene,camera);
         requestAnimationFrame(render);
     }
