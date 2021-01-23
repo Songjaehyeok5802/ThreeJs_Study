@@ -18,30 +18,33 @@ function init() {
     })
     renderer.setClearColor( 0xffffff, 0 );
 
-    camera.position.set(0, 1.5, 10);
+    camera.position.set(-3, 5, 10);
     
     
 
-    const blueLight = new THREE.PointLight( 0xb3ccff, 2, 100 );
+    // const blueLight = new THREE.PointLight( 0xf63030, 1, 100 );
+    // blueLight.position.set( 8, 1.5, 3 );
+    // scene.add( blueLight );
+
+    // const redLight = new THREE.PointLight( 0xf63030, 2.5, 100 );
+    // redLight.position.set( -8, 1.5, 3 );
+    // scene.add( redLight );
+    
+    // const light = new THREE.DirectionalLight( 0x791b1b, 0.5);
+    // light.position.set(0, 10, 10);
+    // scene.add( light );
+
+    const blueLight = new THREE.PointLight( 0x6a6a6a, 1, 100 );
     blueLight.position.set( 8, 1.5, 3 );
     scene.add( blueLight );
 
-    const redLight = new THREE.PointLight( 0xffb3b3, 2, 100 );
+    const redLight = new THREE.PointLight( 0x6a6a6a, 2.5, 100 );
     redLight.position.set( -8, 1.5, 3 );
     scene.add( redLight );
     
-    const sphereSize = 1;
-    const pointLightHelper = new THREE.PointLightHelper( redLight, sphereSize );
-    scene.add( pointLightHelper );
-
-    const pointLightHelper2 = new THREE.PointLightHelper( blueLight, sphereSize );
-    scene.add( pointLightHelper2 );
-    
-    const light = new THREE.DirectionalLight( 0xffffff, 0.5);
+    const light = new THREE.DirectionalLight( 0x6a6a6a, 0.5);
     light.position.set(0, 10, 10);
-    const helper = new THREE.DirectionalLightHelper( light, 5 );
     scene.add( light );
-    scene.add( helper );
 
 
 
@@ -52,14 +55,14 @@ function init() {
         map:texture,
         transparent: true
         });
-        for(let i=0; i<25; i++) {
+        for(let i=0; i<50; i++) {
             let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
             cloud.position.set(
                 (Math.random()*15)-10,
-                (Math.random()*5)-2,
+                Math.random()*10,
                 Math.random()*2
             );
-            cloud.material.opacity = 0.8;
+            cloud.material.opacity = 0.3;
             cloudParticles.push(cloud);
             scene.add(cloud);
         }
